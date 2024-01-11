@@ -1,4 +1,4 @@
-# Standard template for documentation in OS2 products
+# Documentation template for OS2 products
 
 ![](./image/README/1704965197651.gif)
 
@@ -10,7 +10,7 @@ For inspiration, heres some of our pioneers who have adopted this way of buildin
 Feel free to contribute, suggest an issue or submit a pull request with your improvements to this template.
 
 
-## 🏗️ Built with [Just the Docs][Just the Docs] 
+## 🏗️ Getting started 
 
 This is a *bare-minimum* template to create a [Jekyll][Jekyll] site that:
 
