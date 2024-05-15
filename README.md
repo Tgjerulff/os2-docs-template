@@ -1,4 +1,4 @@
-# Documentation template for OS2 products
+# Documentation template for OS2 projects
 
 ## 🏗️ Getting started 
 
