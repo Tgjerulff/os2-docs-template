@@ -1,15 +1,5 @@
 # Documentation template for OS2 products
 
-![](./image/README/1704965197651.gif)
-
-For inspiration, heres some of our pioneers who have adopted this way of building documentation to elevate their products:
-
-- [OS2Compliance](https://github.com/OS2compliance/OS2compliance-docs)
-- [OS2Display](https://github.com/os2display/display-docs)
-
-Feel free to contribute, suggest an issue or submit a pull request with your improvements to this template.
-
-
 ## 🏗️ Getting started 
 
 This is a *bare-minimum* template to create a [Jekyll][Jekyll] site that:
@@ -18,9 +8,17 @@ This is a *bare-minimum* template to create a [Jekyll][Jekyll] site that:
 - can be built and published on [GitHub Pages][GitHub Pages];
 - can be built and previewed locally, and published on other platforms.
 
-You're free to customize sites that you create with this template, however you like!
-
 [Browse documentation][Just the Docs] to learn more about how to use this theme.
+
+Documentation in OS2 products must follow the documentation criteria from the [Standard for Public Code](https://standard.publiccode.net/)
+
+1. [Document your codebase objectives](https://standard.publiccode.net/criteria/document-codebase-objectives.html)
+2. [Document the Code](https://standard.publiccode.net/criteria/document-the-code.html)
+
+Following these criteria not only opens up our codebase and fosters collaboration and transparency, but also encourages more organizations to use and adapt our open source products.
+
+## Contributing
+Feel free to contribute, suggest an issue or submit a pull request with your improvements to this template.
 
 ## Licensing and Attribution
 
