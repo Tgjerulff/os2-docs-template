@@ -28,35 +28,29 @@ To make deployment of [OS2-PROJECTNAME] simple, fast and standardized, we recomm
 For less demanding production environments on a single VM or bare metal host, you can use tools like Ansible, Chef, or Puppet to deploy the containerimage.
 
 ### Examples
-Below is a couple of examples that can be run either manually or automated with your Configuration Managment tool of choice. The examples expects the correct enviroment variables to exist and acces to the repository ressources.
+Below is examples that can be run either manually or automated with your Configuration Managment tool of choice. The examples expects the correct enviroment variables to exist and acces to the repository ressources.
 
-#### Ansible
+### Ansible
 
 Example using `ssh` and `ansible-pull` that pulls and runs the default `local.yml` ansible playbook from the `https://github.com/{USERNAME}/{REPOSITORY}.git` repository.
 
 ```shell
 ssh remote_user@remote_host "ansible-pull -U https://github.com/{USERNAME}/{REPOSITORY}.git
 ```
-[Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)
-
-#### Chef
-Example using `git` and `chef-apply` to pull and run the `recipe.rb` chef recipes ansible playbook from from the `https://github.com/{USERNAME}/{REPOSITORY}.git` repository.
-
-```shell
-git clone https://github.com/{USERNAME}/{REPOSITORY}.git && \
-
-chef-apply {REPOSITORY}/path/to/recipe.rb
-```
-
+🔗 [Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)
 
 ---
 
 ### 🌐 Cluster Deployment
 
-For more demanding production environments that require scalability, fault tolerance, observability and high availability container orchestration tools like [Kubernetes](https://kubernetes.io/), [Nomad](https://www.hashicorp.com/products/nomad), [OpenShift](https://www.openshift.com/) is recommended alongside [GitOps](https://opengitops.dev/) tools like [ArgoCD](https://argoproj.github.io/argo-cd/), [Flux](https://fluxcd.io/) or [Fleet](ttps://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/fleet/
-) to ensure a streamlined and robust deployment process.
+For more demanding production environments that require scalability, fault tolerance, enchanced security, observability and high availability it is best practice to deploy [OS2-PROJECTNAME] to a cluster controlled by a container orchestrator with technologies like like [Kubernetes](https://kubernetes.io/), [Nomad](https://www.hashicorp.com/products/nomad) or [OpenShift](https://www.openshift.com/) together with [GitOps](https://opengitops.dev/) tools like [ArgoCD](https://argoproj.github.io/argo-cd/), [Flux](https://fluxcd.io/) or [Fleet](ttps://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/fleet/ 
+) 
 
-The deployment templates provided in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository are designed for integration into a version-controlled [GitOps](https://opengitops.dev/) workflow. These templates are compatible with your chosen [GitOps](https://opengitops.dev/) tools and the container orchestrator of your choice. For more information on GitOps principles and practices, visit the [Open GitOps website](https://opengitops.dev/)
+The deployment templates provided in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository are designed for integration into a version-controlled [GitOps](https://opengitops.dev/) workflow. These templates are compatible with your chosen [GitOps](https://opengitops.dev/) tools and the container orchestrator of your choice.
+
+🔗 [What is GitOps?](https://about.gitlab.com/topics/gitops/) &ensp; | &ensp;
+🔗 [An illustrated guide to GitOps](https://www.redhat.com/architect/illustrated-guide-gitops)
+
 
 ## 🔄 GitOps Process
 Deploy [OS2-PROJECTNAME] to your cluster in 3 steps:
