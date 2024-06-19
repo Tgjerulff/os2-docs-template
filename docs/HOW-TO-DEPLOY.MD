@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 How to Deploy"
+---
+
 # 🚀 How to Deploy
 
 ## Introduction
