@@ -32,39 +32,18 @@ BE & FE-->|metrics|O{{Observability}}
 ### Requirements
 To set up a containerized development and test environment on a local computer or in a hosted developer enviroment a container runtime enviroment is needed.
 
-
-
-
-#### Docker example
-
-```shell
-docker run -d -p {CONTAINERPORT:HOSTPORT} --name {CONTAINER_NAME} {IMAGE_NAME}:{TAG}
-```
-
-[Official documentation for `docker run`](https://docs.docker.com/reference/cli/docker/container/run/)
-
-#### Podman example
-
-```shell
-podman run -d -p {HOSTPORT}:{CONTAINERPORT} --name {CONTAINER_NAME} {IMAGE_NAME}:{TAG}
-```
-
-[Official documentation for `podman run`](https://docs.podman.io/en/latest/markdown/podman-run.1.html)
-
-
-Guide: https://docs.docker.com/guides/getting-started/develop-with-containers/
 ---
 
 
 ## Development
 
-To spin up the project, simply install Docker Desktop and then run the following 
+To spin up the project, simply install docker-compose and then run the following 
 commands:
 
 ```
-git clone https://github.com/docker/getting-started-todo-app
-cd getting-started-todo-app
-docker compose up -d
+$ git clone https://github.com/docker/getting-started-app
+$ cd getting-started-app
+$ docker compose up -d
 ```
 
 You'll see several container images get downloaded from Docker Hub and, after a
@@ -85,5 +64,5 @@ resolve `*.localhost` correctly, so no hosts file changes should be required).
 When you're done, simply remove the containers by running the following command:
 
 ```
-docker compose down
+$ docker compose down
 ```

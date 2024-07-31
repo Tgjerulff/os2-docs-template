@@ -128,3 +128,20 @@ Deploy [OS2-PROJECTNAME] to your cluster in 3 steps:
 3. **Merge and Deploy**: 
    - **Review and Approve**: Have your team review and approve the PR.
    - **Merge and Trigger**: Merge the approved PR into the main branch, which triggers the GitOps tool to synchronize and apply the configurations to your cluster.
+
+### :gear: Operations
+
+#### Updating the Application
+Explain how to update the application. With GitOps, this is typically done by making a change to the manifests in the Git repository.
+
+#### Rollbacks
+Discuss how to rollback to a previous version of the application. With GitOps, this can be done by reverting the commit in the Git repository.
+
+#### Monitoring and Logging
+Explain how to monitor the health of the application and how to access the logs. Consider integrating with a centralized logging system.
+
+#### Security
+Discuss any security considerations such as network policies, RBAC, and secret management.
+
+#### Troubleshooting
+Provide common troubleshooting steps and known issues.
