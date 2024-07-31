@@ -59,7 +59,10 @@ The following steps provide a general guide for manual running a single containe
    :books: [Official podman documentation](https://podman.io/docs)
 
 ### 🅰️ Managed deployment
-You can write deployments to execute the above steps with your preferred deployment tool, whether it is ansible, chef, puppet, salt. The below example uses `ssh` and `ansible-pull` to pull and run the a default `local.yml` ansible playbook from a deployment repository.
+You can write deployments to execute the above steps with your preferred deployment tool, whether it is 
+[Ansible](https://www.ansible.com/), [Chef](https://www.chef.io/), [Puppet](https://puppet.com/) or [Salt](https://saltproject.io/).
+
+The below example uses `ssh` and `ansible-pull` to pull and run a default `local.yml` ansible playbook from a deployment repository.
 
 ###### Ansible playbook example:
 
