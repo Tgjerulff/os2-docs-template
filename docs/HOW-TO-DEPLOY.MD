@@ -5,22 +5,23 @@ title: "🚀 How to Deploy"
 
 # 🚀 How to Deploy
 
-This document will walk you through the process of deploying pre-built containers to a production host or cluster.
+This document will walk you through the process of deploying pre-built containers to a single host or a cluster.
 
-To make deployment of [OS2-PROJECTNAME] simple, fast and standardized, we recommend using the supplied deployment templates in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository. 
+>  [!NOTE] Deployment templates
+> ###### To make deployment of [OS2-PROJECTNAME] simple, fast and standardized, we recommend using the supplied deployment templates in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository. 
 
-
+ &ensp;
 
 ## 🖥 Single Host Deployment
 
-The single host deployment strategy provided by [OS2-PROJECTNAME] operates without redundancy. It lacks the capabilities to auto-scale or auto-heal.
+The single host deployment strategy provided by [OS2-PROJECTNAME] operates without redundancy. It lacks the capabilities to auto-scale or auto-heal and it is not suited for more complex multi-container applications.
 
 > [!CAUTION] Not Recommended for Production Use
-> ###### This strategy is a cost-effective solution for short-term, limited use systems such as simple Proof of Concepts (PoC) or test systems. While this option allows for a reduction in initial investment, it introduces a single point of failure in the deployment. This deployment strategy is NOT recommended in production systems unless a comprehensive risk assessment process has been conducted and the associated risks have been accepted.
+> ###### This strategy is a cost-effective solution for short-term, limited use systems such as simple Proof of Concepts (PoC) or test systems. While this option allows for a reduction in initial investment, it introduces a single point of failure in the deployment. This deployment strategy is NOT recommended in production systems unless a comprehensive risk assessment process has been conducted and the associated risks have been documented and accepted.
 
 
 ### ⬛ Manual deployment
-The following steps provide a general guide for manual running a container using 
+The following steps provide a general guide for manual running a single container application using 
  a runtime that complies with [the OCI standard for container runtimes](https://opencontainers.org/). While the examples use [podman](https://podman.io), you can replace it with any [OCI](https://opencontainers.org/)-compliant runtime tool that fits your specific needs and system configuration.
 
 1. **Download the Container Image.**
@@ -60,6 +61,10 @@ The following steps provide a general guide for manual running a container using
 ### 🅰️ Managed deployment
 You can write deployments to execute the above steps with your preferred deployment tool, whether it is ansible, chef, puppet, salt. The below example uses `ssh` and `ansible-pull` to pull and run the a default `local.yml` ansible playbook from a deployment repository.
 
+###### Ansible playbook example:
+
+`local.yml`
+
 ```yaml
 - hosts: servers
   vars:
@@ -83,31 +88,30 @@ You can write deployments to execute the above steps with your preferred deploym
       fail:
         msg: "Container is not running"
       when: "'my_container' not in result.stdout"
-
 ```
+
+</details>
 
 Store the playbook in a dedicated git repository for your deployment and execute it with `ansible-pull`
 
-```shell
+```r
 $ ssh remote_user@remote_host "ansible-pull -U https://github.com/{USERNAME}/{REPOSITORY}.git
 ```
-   :books: [Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)
-
+   :books: [Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html) &ensp; | &ensp;
    :books: [Ansible community documentation - containers.podman](https://docs.ansible.com/ansible/latest/collections/containers/podman/index.html)
 
+ &ensp;
 
 ## 🚢 Cluster Deployment
 
 For production environments that require scalability, fault tolerance, enchanced security, observability and high availability it is best practice to deploy [OS2-PROJECTNAME] to a cluster controlled by a container orchestrator with technologies like [Kubernetes](https://kubernetes.io/), [Nomad](https://www.hashicorp.com/products/nomad) or [OpenShift](https://www.openshift.com/) together with [GitOps](https://opengitops.dev/) tools like [ArgoCD](https://argoproj.github.io/argo-cd/), [Flux](https://fluxcd.io/) or [Fleet](ttps://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/fleet/ 
-) 
+)
 
-The deployment templates provided in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository are designed for integration into a version-controlled GitOps workflow. These templates are compatible with your chosen GitOps tools and the container orchestrator of your choice.
-
-🔗 [What is GitOps?](https://about.gitlab.com/topics/gitops/) &ensp; | &ensp;
-🔗 [An illustrated guide to GitOps](https://www.redhat.com/architect/illustrated-guide-gitops)
+:books: [What is GitOps?](https://about.gitlab.com/topics/gitops/) &ensp; | &ensp;
+:books: [An illustrated guide to GitOps](https://www.redhat.com/architect/illustrated-guide-gitops)
 
 
-## 🔄 Recommended deployment process
+### ♾️ GitOps deployment process
 Deploy [OS2-PROJECTNAME] to your cluster in 3 steps:
 
 1. **Initialize and Synchronize**: 
