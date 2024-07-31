@@ -5,59 +5,109 @@ title: "🚀 How to Deploy"
 
 # 🚀 How to Deploy
 
-## Introduction
+This document will walk you through the process of deploying pre-built containers to a production host or cluster.
 
-Welcome to the deployment guide for [OS2-PROJECTNAME]. This document will walk you through the process of deploying pre-built containers, whether you're setting up a development environment or deploying to a production cluster.
-
-## 💻 Development
-To set up a containerized development and test environment on a local computer or in a hosted developer enviroment like GitHub codespaces, you can use a simple `docker run` or `podman run` command to pull the containerimage and run the container.
-
-#### Docker example
-```shell
-docker run -d -p {CONTAINERPORT:HOSTPORT} --name {CONTAINER_NAME} {IMAGE_NAME}:{TAG}
-```
-[Official documentation for `docker run`](https://docs.docker.com/reference/cli/docker/container/run/)
-
-#### Podman example
-```shell
-podman run -d -p {HOSTPORT}:{CONTAINERPORT} --name {CONTAINER_NAME} {IMAGE_NAME}:{TAG}
-```
-[Official documentation for `podman run`](https://docs.podman.io/en/latest/markdown/podman-run.1.html)
-
-
-
-## 🚢 Production
 To make deployment of [OS2-PROJECTNAME] simple, fast and standardized, we recommend using the supplied deployment templates in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository. 
 
-### 🖥 Deployment on a single host
-For less demanding production environments on a single VM or bare metal host, you can use tools like Ansible, Chef, or Puppet to deploy the containerimage.
 
-### Examples
-Below is examples that can be run either manually or automated with your Configuration Managment tool of choice. The examples expects the correct enviroment variables to exist and acces to the repository ressources.
 
-### Ansible
+## 🖥 Single Host Deployment
 
-Example using `ssh` and `ansible-pull` that pulls and runs the default `local.yml` ansible playbook from the `https://github.com/{USERNAME}/{REPOSITORY}.git` repository.
+The single host deployment strategy provided by [OS2-PROJECTNAME] operates without redundancy. It lacks the capabilities to auto-scale or auto-heal.
+
+> [!CAUTION] Not Recommended for Production Use
+> ###### This strategy is a cost-effective solution for short-term, limited use systems such as simple Proof of Concepts (PoC) or test systems. While this option allows for a reduction in initial investment, it introduces a single point of failure in the deployment. This deployment strategy is NOT recommended in production systems unless a comprehensive risk assessment process has been conducted and the associated risks have been accepted.
+
+
+### ⬛ Manual deployment
+The following steps provide a general guide for manual running a container using 
+ a runtime that complies with [the OCI standard for container runtimes](https://opencontainers.org/). While the examples use [podman](https://podman.io), you can replace it with any [OCI](https://opencontainers.org/)-compliant runtime tool that fits your specific needs and system configuration.
+
+1. **Download the Container Image.**
+
+   Use the `pull` command to download the container image from the registry. Add a tag if needed. 
+
+      ```r
+      $ podman pull <image-name>:<tag>
+      ```
+
+2. **Start the Container**
+
+    Use the run command to start the container.
+   
+      ```r
+      $ podman run <image-name>:<tag>.
+      ```
+
+3. **Verify Status**
+
+   Check if the container is running using the `ps` command.
+      ```r
+      $ podman ps
+      ```
+
+4. **Stop and Remove**
+
+   To stop the container, use `stop` and `rm` to remove it. 
+      ```r
+      $ podman stop <container-id>
+
+      $ podman rm <container-id>
+      ```
+
+   :books: [Official podman documentation](https://podman.io/docs)
+
+### 🅰️ Managed deployment
+You can write deployments to execute the above steps with your preferred deployment tool, whether it is ansible, chef, puppet, salt. The below example uses `ssh` and `ansible-pull` to pull and run the a default `local.yml` ansible playbook from a deployment repository.
+
+```yaml
+- hosts: servers
+  vars:
+    image_name: 'your_image_name_here'
+  tasks:
+    - name: Pull an image
+      containers.podman.podman_image:
+        name: "{{ image_name }}"
+        
+    - name: Run the container
+      containers.podman.podman_container:
+        name: my_container
+        image: "{{ image_name }}"
+        state: started
+      
+    - name: Verify the container is running
+      command: "podman ps -a | grep my_container"
+      register: result
+      
+    - name: Fail if container is not running
+      fail:
+        msg: "Container is not running"
+      when: "'my_container' not in result.stdout"
+
+```
+
+Store the playbook in a dedicated git repository for your deployment and execute it with `ansible-pull`
 
 ```shell
-ssh remote_user@remote_host "ansible-pull -U https://github.com/{USERNAME}/{REPOSITORY}.git
+$ ssh remote_user@remote_host "ansible-pull -U https://github.com/{USERNAME}/{REPOSITORY}.git
 ```
-🔗 [Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)
+   :books: [Official documentation for `ansible-pull`](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)
 
----
+   :books: [Ansible community documentation - containers.podman](https://docs.ansible.com/ansible/latest/collections/containers/podman/index.html)
 
-### 🌐 Cluster Deployment
 
-For more demanding production environments that require scalability, fault tolerance, enchanced security, observability and high availability it is best practice to deploy [OS2-PROJECTNAME] to a cluster controlled by a container orchestrator with technologies like like [Kubernetes](https://kubernetes.io/), [Nomad](https://www.hashicorp.com/products/nomad) or [OpenShift](https://www.openshift.com/) together with [GitOps](https://opengitops.dev/) tools like [ArgoCD](https://argoproj.github.io/argo-cd/), [Flux](https://fluxcd.io/) or [Fleet](ttps://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/fleet/ 
+## 🚢 Cluster Deployment
+
+For production environments that require scalability, fault tolerance, enchanced security, observability and high availability it is best practice to deploy [OS2-PROJECTNAME] to a cluster controlled by a container orchestrator with technologies like [Kubernetes](https://kubernetes.io/), [Nomad](https://www.hashicorp.com/products/nomad) or [OpenShift](https://www.openshift.com/) together with [GitOps](https://opengitops.dev/) tools like [ArgoCD](https://argoproj.github.io/argo-cd/), [Flux](https://fluxcd.io/) or [Fleet](ttps://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/fleet/ 
 ) 
 
-The deployment templates provided in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository are designed for integration into a version-controlled [GitOps](https://opengitops.dev/) workflow. These templates are compatible with your chosen [GitOps](https://opengitops.dev/) tools and the container orchestrator of your choice.
+The deployment templates provided in the `https://github.com/{USERNAME}/{REPOSITORY}.git` deployment repository are designed for integration into a version-controlled GitOps workflow. These templates are compatible with your chosen GitOps tools and the container orchestrator of your choice.
 
 🔗 [What is GitOps?](https://about.gitlab.com/topics/gitops/) &ensp; | &ensp;
 🔗 [An illustrated guide to GitOps](https://www.redhat.com/architect/illustrated-guide-gitops)
 
 
-## 🔄 GitOps Process
+## 🔄 Recommended deployment process
 Deploy [OS2-PROJECTNAME] to your cluster in 3 steps:
 
 1. **Initialize and Synchronize**: 
@@ -71,6 +121,3 @@ Deploy [OS2-PROJECTNAME] to your cluster in 3 steps:
 3. **Merge and Deploy**: 
    - **Review and Approve**: Have your team review and approve the PR.
    - **Merge and Trigger**: Merge the approved PR into the main branch, which triggers the GitOps tool to synchronize and apply the configurations to your cluster.
-
-## ☁️ Managed GitOps Hosting
-If preferred, select a managed GitOps hosting provider that aligns with your project's needs and goals.
