@@ -1,14 +1,9 @@
 # Documentation template for OS2 projects
 
-## 🏗️ Getting started 
+## How to use this template for documenting your OS2 project
 
-This is a *bare-minimum* template to create a [Jekyll][Jekyll] site that:
 
-- uses the [Just the Docs][Just the Docs] theme;
-- can be built and published on [GitHub Pages][GitHub Pages];
-- can be built and previewed locally, and published on other platforms.
-
-[Browse documentation][Just the Docs] to learn more about how to use this theme.
+[Browse documentation][Just the Docs] to learn more about features for formatting your documents
 
 Documentation in OS2 products must follow the documentation criteria from the [Standard for Public Code](https://standard.publiccode.net/)
 
