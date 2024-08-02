@@ -2,8 +2,28 @@
 
 ## How to use this template for documenting your OS2 project
 
+## 👷 Maintainers guide
+As a part of the documentation maintainer team... 
+1. Start by [creating a documentation repository in your project, from this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), including only the main branch.
 
-[Browse documentation][Just the Docs] to learn more about features for formatting your documents
+2. Use the repositorys built-in [issues feature](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) to manage all changes, task and suggestions for improvements. [Organize your work in Milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) and [use task lists to break down larger documentation work](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists). Use [labels to prioritize and classify your issues](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) to maintain an overview on what needs to be done.
+
+3. Stay on top of proposed changes to the documentation by [reviewing and merging Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews) to your documentation repository,
+
+
+## 🧑‍🦰 Contributors Guide
+As a contributor
+
+
+Changes and suggestions are raised as issues
+Standardized version controlled workflow.
+
+OS2 are currently using GitHub
+
+
+[Browse documentation][Just the Docs] to learn more about the templates features for formatting your documents
+
+Content guide:
 
 Documentation in OS2 products must follow the documentation criteria from the [Standard for Public Code](https://standard.publiccode.net/)
 
