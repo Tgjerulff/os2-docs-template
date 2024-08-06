@@ -3,27 +3,33 @@
 ## How to use this template for documenting your OS2 project
 
 ## 👷 Maintainers guide
-As a part of the documentation maintainer team... 
+*In OS2 projects the maintainer team is the group of individuals assigned to oversee the development, quality, and community engagement of the documentation project.*
+
+
 1. Start by [creating a documentation repository in your project, from this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), including only the main branch.
 
 2. Use the repositorys built-in [issues feature](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) to manage all changes, task and suggestions for improvements. 
     - Organize your work in [Milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) 
     - [Use task lists](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists) to break down larger documentation work into manageble pieces.
     - [Assign labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)  to prioritize and classify your issues and maintain an overview on what needs to be done.
+    - Document suggestions and improvements by [raising issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) and describing what needs to be fixed, describe the user stories and potential delivered values.
 
 3. Stay on top of proposed changes to the documentation by [reviewing and merging Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews) to your documentation repository,
 
-    > [!TIP]
-        > If you get stuck, os2 can help, just get in touch [os2@os2.eu](mailto:os2@os2.eu)
+
+> [!TIP] 
+>###### In doubt or stuck with a maintainer task?
+>######  Try [these Best Practice advice for maintaining collaborative, safe, and effective communities.](https://docs.github.com/en/communities)
 
 
 ## 🧑‍🦰 Contributors Guide
-As a contributor
-1. Document suggestions and improvements by [raising issues feature](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) and describing what needs to be fixed, describe the user stories and potential delivered values.
+*Contributors to the documentation can be project managers, technical editors, developers and end-users.*
+
+1. Document suggestions and improvements by [raising issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) and describing what needs to be fixed, describe the user stories and potential delivered values.
 
 2. Participate in issue discussions to help reach the correct resolutions. If you have the required knowledge about a part of the project, suggest yourself as an [assignee to the issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users#about-issue-and-pull-request-assignees).
 
-3. Using simple [Markdown](), collaborate on documentation branches with issues assigned to you by the maintainers.
+3. Collaborate on documentation branches with issues assigned to you by the maintainers.
 
 [Browse documentation][Just the Docs] to learn more about the templates features for formatting your documents
 
